@@ -1,0 +1,137 @@
+05/12/16
+show database;
+
+///create database:
+>create databese sales;
+>use sales;
+>CREATE TABLE IF NOT EXISTS salespeople
+(
+  >snum INT not null,
+  >SNAME VARCHAR(30) NOT NULL,
+  >city VARCHAR(30) NOT NULL,
+  >comm DECIMAL(4,2) NOT NULL,
+  >PRIMARY KEY(snum)
+);
+
+>show table;
+
+>descibe salespeople;
+
+>INSERT INTO salespeople VALUES(1001,'Peel','London',0.12);
+
+>INSERT INTO salespeople VALUES(1002,'Serres','San Jose',0.13);
+
+>Select * from salespeople;
+
+>INSERT INTO salespeople VALUES(1004,'Motika','London',0.11);
+
+>INSERT INTO salespeople VALUES(1007,'Rifkin','Barcelona',0.15);
+
+>INSERT INTO salespeople VALUES(1003,'AxelRod','New York',0.10);
+
+>INSERT INTO salespeople VALUES(1005,'Fran','London',0.26);
+
+>Select * from salespeople;
+
+>CREATE TABLE IF NOT EXISTS customer
+(
+  >cnum INT NOT NULL,
+  >cname VARCHAR(30) NOT NULL,
+  >city VARCHAR(30) NOT NULL,
+  >rating int not null,
+  > snum int not null,
+PRIMARY KEY(cnum),
+FOREIGN KEY(snum)REFRENCE salespeople(snum)
+);
+
+
+
+>insert into customer values(2001,'Hoffman','London',100,1000);
+
+>insert into customer values(2002,'Giovanni','Rome',200,1003);
+
+>insert into customer values(2003,'Liu','San Jose',200,1002);
+
+>insert into customer values(2004,'Grass','Berlin',300,1002);
+
+>insert into customer values(2006,'Clemens','London',200,1001);
+
+>insert into customer values(2008,'Cisneros','San Jose',300,1007);
+
+>insert into customer values(2007,'Pereira','Roma',100,1004);
+
+
+>select * from customer;
+
+>desc salespeople;
+
+>select a.cname,b.sname from customer a,salespeople b where a.snum=b.snum;
+
+//let us list the customer citywise?
+
+> select * from customer order by city;
+
+//print the customer city from london?
+
+>select * from customer where city='London';
+>select cname,city,rating from customer where city='Roma';
+
+//display the column of customer base on rating which contain higher or lowest rating...
+>select * from customer order by rating ;
+>select cname,max(rating) from customer group by;
+>select max(rating) from customer;
+>select * from customer where rating =(select max(rating) from customer);
+
+
+//PRIMARY KEY- A PRIMARY KEY IS UNIQUE .A KEY VALUE CAN NOT OCCUR TWICE IN ONE TABLE .WITH A KEY,YOU CAN FIND AT MOST ONE ROW.
+//FOREIGN KEY-IT GIVES LINK UP BETWEEN TWO TABLE..
+
+
+//SALES PEOPLE NAME ALONG WITH THE CUSTOMER??
+//column name should be identify by table name//
+>SELECT customer.cnum,customer.cname,customer.city,customer.rating,
+salespeople.sname from customer,salespeople where customer.snum=salespeople.snum;
+>SELECT a.cnum,a.cname,a.city,a.rating,
+b.sname from customer a,salespeople b where a.snum=b.snum;
+
+//if i want to fetch the data who is dealing with peel??
+>select  a.cnum,a.cname,a.city,a.rating,
+b.sname from customer a,salespeople b where a.snum=b.snum and b.sname='Peel';
+
+// find out people who coming from london or could be having a rating of 100??
+ >select * from customer where city='London' or rating=100;
+
+//customer list who is coming from Rome and deal with 1003?
+>select * from customer where city='Rome' and snum=1003;
+
+>select * from customer;
+>select * from customer group by snum;
+>select snum.count(*) from customer group by snum;
+>select * from customer;
+>select snum,count(*) as customer_count from customer group by snum;
+>select a.snum,count(a.snum) as customer_count from customer a,salespeople b where a.snum=b.snum group by a.snum,b.sname;
+
+
+//fetch data from salespeople
+//how many salesperson stay in london?
+>select *from salespeople where city='London';
+
+//having a comm between .12 and .15?
+>select * from salespeople where comm>=0.12 and comm<=0.15;
+
+//where clause is used for joins certain query...
+
+
+//find out people cuming from london and having a comm between .12 and .15?
+>select * from salespeople where city='London' and comm>=0.12 and comm<=0.15;
+
+
+// find people who are cuming from london and new york?
+>select * from salespeople where city='London' or city='New York';
+
+//end of lecture..
+
+command for ubuntu os..to install mysql
+sudo apt-get update
+sudo apt-get install mysql-server-5.6
+dnt giv any password for mysql database while installation.
