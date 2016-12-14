@@ -1,0 +1,29 @@
+# MYSQLWhat is Database?
+A database is a separate application that stores a collection of data. Each database
+has one or more distinct APIs for creating, accessing, managing, searching and
+replicating the data it holds.
+Other kinds of data stores can be used, such as files on the file system or large hash
+tables in memory, but data fetching and writing would not be so fast and easy with
+those types of systems.
+So nowadays, we use relational database management systems (RDBMS) to store
+and manage huge volume of data. This is called relational database because all the
+data is stored into different tables and relations are established using primary keys or
+other keys known as foreign keys.
+A Relational DataBase Management System (RDBMS) is a software that:
+Enables you to implement a database with tables, columns and indexes.
+Guarantees the Referential Integrity between rows of various tables.
+Updates the indexes automatically.
+Interprets an SQL query and combines information from various tables.
+RDBMS Terminology:
+Before we proceed to explain MySQL database system, let's revise few definitions related to database.
+Database: A database is a collection of tables, with related data.
+Table: A table is a matrix with data. A table in a database looks like a simple
+spreadsheet.
+Column: One column (data element) contains data of one and the same kind, for
+example the column postcode.
+Row: A row (= tuple, entry or record) is a group of related data, for example the data
+of one subscription.
+Redundancy: Storing data twice, redundantly to make the system faster.
+Primary Key: A primary key is unique. A key value can not occur twice in one table.
+With a key, you can find at most one row.
+Foreign Key: A foreign key is the linking pin between two tables.
